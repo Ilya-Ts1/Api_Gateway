@@ -10,12 +10,18 @@ import (
 func main() {
 	r := chi.NewRouter()
 
-	r.Get("/api", func(w http.ResponseWriter, r *http.Request) {
+	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Conent-Type", "text/plain")
 		w.Write([]byte("Hello i am apigateway"))
 	})
 
+	
+
+
+
+
 	err := http.ListenAndServe(":8080", r)
-	if err != nil{
+	if err != nil {
 		fmt.Println("Error open api_gateway http localhost:8080")
 	}
 
